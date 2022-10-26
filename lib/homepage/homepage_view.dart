@@ -1,20 +1,78 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/homepage/api.dart';
+
 import 'package:movie_app/homepage/homepage_controller.dart';
-import 'package:movie_app/homepage/homepage_model.dart';
 
 class Home extends GetView<HomePageController> {
- const Home({super.key});
-
-
-
- 
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: controller.obx((state) => Container()),
+      backgroundColor: Color.fromARGB(66, 6, 3, 61),
+      appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
+                fit: BoxFit.cover,
+                height: 40),
+          ])),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            controller.obx(
+              (state) => SizedBox(
+                height: 300,
+                width: 800,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.movieList.length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.network(
+                            "https://image.tmdb.org/t/p/w440_and_h660_face${controller.movieList[index].posterPath}"),
+                      ],
+                    );
+
+                    const SizedBox(
+                      height: 20.0,
+                    );
+                  },
+                ),
+              ),
+            ),
+            controller.obx(
+              (state) => SizedBox(
+                height: 300,
+                width: 800,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.topRatedMovieList.length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.network(
+                            "https://image.tmdb.org/t/p/w440_and_h660_face${controller.topRatedMovieList[index].posterPath}"),
+                      ],
+                    );
+
+                    const SizedBox(
+                      height: 20.0,
+                    );
+                  },
+                ),
+              ),
+            ),
+            Text("Liste des films du moments"),
+          ],
+        ),
+      ),
     );
   }
 }
