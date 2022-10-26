@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:movie_app/homepage/homepage_controller.dart';
 
@@ -20,7 +21,13 @@ class Home extends GetView<HomePageController> {
           ])),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(
+              "Les films les plus populaires",
+              style: GoogleFonts.ubuntu(
+                  textStyle: TextStyle(color: Colors.white, fontSize: 25)),
+            ),
             controller.obx(
               (state) => SizedBox(
                 height: 300,
@@ -44,6 +51,11 @@ class Home extends GetView<HomePageController> {
                   },
                 ),
               ),
+            ),
+            Text(
+              "Les films les plus populaires",
+              style: GoogleFonts.ubuntu(
+                  textStyle: TextStyle(color: Colors.white, fontSize: 25)),
             ),
             controller.obx(
               (state) => SizedBox(
@@ -69,7 +81,6 @@ class Home extends GetView<HomePageController> {
                 ),
               ),
             ),
-            Text("Liste des films du moments"),
           ],
         ),
       ),
