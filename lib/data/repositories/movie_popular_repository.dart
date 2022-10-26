@@ -36,4 +36,20 @@ class MovieRepository {
       return [];
     }
   }
+
+  Future<List<Movie>> getAllNowPlaying() async {
+    try {
+      var response = await Dio().get(
+        'https://api.themoviedb.org/3/movie/now_playing',
+        queryParameters: {"api_key": "b7aec811fb276e1e7b9a0a3a5a7591e4"},
+      );
+      List<Movie> movieList = response.data['results']
+          .map<Movie>((movie) => Movie.fromJson(movie))
+          .toList();
+      return movieList;
+    } catch (e) {
+      print(e);
+      return [];
+    }
+  }
 }

@@ -53,7 +53,7 @@ class Home extends GetView<HomePageController> {
               ),
             ),
             Text(
-              "Les films les plus populaires",
+              "Les films les mieux notés",
               style: GoogleFonts.ubuntu(
                   textStyle: TextStyle(color: Colors.white, fontSize: 25)),
             ),
@@ -71,6 +71,35 @@ class Home extends GetView<HomePageController> {
                       children: [
                         Image.network(
                             "https://image.tmdb.org/t/p/w440_and_h660_face${controller.topRatedMovieList[index].posterPath}"),
+                      ],
+                    );
+
+                    const SizedBox(
+                      height: 20.0,
+                    );
+                  },
+                ),
+              ),
+            ),
+            Text(
+              "Les films sorti récemment",
+              style: GoogleFonts.ubuntu(
+                  textStyle: TextStyle(color: Colors.white, fontSize: 25)),
+            ),
+            controller.obx(
+              (state) => SizedBox(
+                height: 300,
+                width: 800,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.nowPlayingList.length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.network(
+                            "https://image.tmdb.org/t/p/w440_and_h660_face${controller.nowPlayingList[index].posterPath}"),
                       ],
                     );
 
