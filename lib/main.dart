@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movie_app/homepage/homepage_bindings.dart';
 import 'package:movie_app/homepage/homepage_view.dart';
+import 'package:movie_app/movie_details/movie_detail_view.dart';
+
+import 'movie_details/movie_details_bindings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +33,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       getPages: [
-        GetPage(name: '/home', page: () => Home(), binding: HomePageBinding())
+        GetPage(name: '/home', page: () => Home(), binding: HomePageBinding()),
+        GetPage(
+            name: '/movieDetail',
+            page: () => MovieDetailView(),
+            binding: MovieDetailBinding()),
       ],
       initialRoute: "/home",
     );
