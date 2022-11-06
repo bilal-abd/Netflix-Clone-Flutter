@@ -40,8 +40,13 @@ class Home extends GetView<HomePageController> {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.network(
-                            "https://image.tmdb.org/t/p/w440_and_h660_face${controller.movieList[index].posterPath}"),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/movieDetail", arguments: index);
+                          },
+                          child: Image.network(
+                              "https://image.tmdb.org/t/p/w440_and_h660_face${controller.movieList[index].posterPath}"),
+                        ),
                       ],
                     );
 
@@ -66,12 +71,13 @@ class Home extends GetView<HomePageController> {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.topRatedMovieList.length,
                   itemBuilder: (context, index) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Image.network(
-                            "https://image.tmdb.org/t/p/w440_and_h660_face${controller.topRatedMovieList[index].posterPath}"),
-                      ],
+                    var item = controller.topRatedMovieList[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed("/movieDetail", arguments: index);
+                      },
+                      child: Image.network(
+                          "https://image.tmdb.org/t/p/w440_and_h660_face${controller.topRatedMovieList[index].posterPath}"),
                     );
 
                     const SizedBox(
@@ -98,8 +104,13 @@ class Home extends GetView<HomePageController> {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.network(
-                            "https://image.tmdb.org/t/p/w440_and_h660_face${controller.nowPlayingList[index].posterPath}"),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/movieDetail", arguments: index);
+                          },
+                          child: Image.network(
+                              "https://image.tmdb.org/t/p/w440_and_h660_face${controller.nowPlayingList[index].posterPath}"),
+                        ),
                       ],
                     );
 
