@@ -5,9 +5,13 @@ import 'package:movie_app/data/repositories/movie_popular_repository.dart';
 
 import '../data/models/movie.dart';
 
-class HomePageController extends GetxController with StateMixin {
+class MovieDetailController extends GetxController with StateMixin {
   MovieRepository movieRepository;
-  HomePageController({required this.movieRepository});
+  String name = "";
+  String title = "";
+
+  MovieDetailController(
+      {required this.movieRepository, required this.name, required this.title});
   List<Movie> movieList = [];
 
   @override

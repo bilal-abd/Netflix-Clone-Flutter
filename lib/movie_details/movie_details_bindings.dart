@@ -2,11 +2,14 @@ import 'package:get/get.dart';
 import 'package:movie_app/data/repositories/movie_popular_repository.dart';
 import 'package:movie_app/homepage/homepage_controller.dart';
 
-class HomePageBinding extends Bindings {
+import 'movie_detail_controller.dart';
+
+class MovieDetailBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => HomePageController(
-          movieRepository: MovieRepository(),
-        ));
+    Get.lazyPut(() => MovieDetailController(
+        movieRepository: MovieRepository(),
+        name: toString(),
+        title: toString()));
   }
 }
