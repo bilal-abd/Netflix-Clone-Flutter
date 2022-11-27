@@ -27,10 +27,10 @@ class MovieRepository {
         'https://api.themoviedb.org/3/movie/top_rated',
         queryParameters: {"api_key": "b7aec811fb276e1e7b9a0a3a5a7591e4"},
       );
-      List<Movie> movieList = response.data['results']
+      List<Movie> topRatedMovieList = response.data['results']
           .map<Movie>((movie) => Movie.fromJson(movie))
           .toList();
-      return movieList;
+      return topRatedMovieList;
     } catch (e) {
       print(e);
       return [];
@@ -43,10 +43,10 @@ class MovieRepository {
         'https://api.themoviedb.org/3/movie/now_playing',
         queryParameters: {"api_key": "b7aec811fb276e1e7b9a0a3a5a7591e4"},
       );
-      List<Movie> movieList = response.data['results']
+      List<Movie> nowPlayingList = response.data['results']
           .map<Movie>((movie) => Movie.fromJson(movie))
           .toList();
-      return movieList;
+      return nowPlayingList;
     } catch (e) {
       print(e);
       return [];
